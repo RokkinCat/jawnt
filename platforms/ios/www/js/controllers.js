@@ -18,16 +18,42 @@ angular.module('starter.controllers', [])
 })
 
 .controller('SearchCtrl', function($scope, $stateParams) {
-  $scope.map = new ol.Map({
-    target: 'map',
-    layers: [
-      new ol.layer.Tile({
-        source: new ol.source.MapQuest({layer: 'osm'})
+})
+
+.controller('CreateCtrl', function($scope, $stateParams) {
+  $scope.locating = true;
+  $scope.recording = false;
+
+  var updatePosition = function(coords) {
+    $scope.longitude = coords.longitude;
+    $scope.latitude = coords.latitude;
+  }
+
+  // Subscribe to user position
+  if (navigator.geolocation) {
+    $scope.locationObserver = navigator.geolocation.watchPosition(function(position) {
+      $scope.$apply(function() {
+        updatePosition(position.coords);
+        $scope.locating = false;
       })
-    ],
-    view: new ol.View2D({
-      center: ol.proj.transform([37.41, 8.82], 'EPSG:4326', 'EPSG:3857'),
-      zoom: 4
-    })
-  });
+    });
+  }
+
+  $scope.record = function() {
+    $scope.recording = true;
+    $scope.paused = false;
+  }
+
+  $scope.stop = function() {
+    $scope.recording = false;
+  }
+
+  $scope.pause = function() {
+    $scope.paused = true;
+  }
+
+  $scope.play = function() {
+    $scope.paused = false;
+  }
+
 })
