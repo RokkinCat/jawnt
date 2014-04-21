@@ -39,6 +39,14 @@ angular.module('starter.controllers', [])
     });
   }
 
+  // Fill in proper GeoJSON object here
+  $scope.geoJSON = {};
+
+  $scope.style = function(feature, resolution) {
+    // Return out how to style each feature
+    return null;
+  }
+
   $scope.record = function() {
     $scope.recording = true;
     $scope.paused = false;

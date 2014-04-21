@@ -6,7 +6,9 @@ angular.module('openstreetmaps', [])
       controls: "=controls",
       longitude: "=longitude",
       latitude: "=latitude",
-      zoom: "=zoom"
+      zoom: "=zoom",
+      geoJSON: "=geoJson",
+      geoStyle: "=geoJsonStyle"
     },
     link: function($scope, element) {
       $scope.map = new ol.Map({
@@ -40,7 +42,18 @@ angular.module('openstreetmaps', [])
           $scope.map.getView().setZoom($scope.zoom);
           $scope.markers.setPosition($scope.map.getView().getCenter());
         }
-      })
+      });
+
+      // This may not be performant enough
+      $scope.$watch("geoJSON", function(json) {
+        var o = $scope.geoJSONLayer;
+        $scope.geoJSONLayer = new ol.layer.Vector({
+          source: new ol.source.GeoJSON($scope.geoJSON),
+          style: $scope.geoStyle
+        });
+        if(o) $scope.map.removeLayer(o);
+        $scope.map.addLayer($scope.geoJSONLayer);
+      }, true);
     }
   }
 });
