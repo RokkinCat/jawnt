@@ -49,9 +49,9 @@ angular.module('openstreetmaps', [])
         var o = $scope.geoJSONLayer;
         $scope.geoJSONLayer = new ol.layer.Vector({
           source: new ol.source.GeoJSON($scope.geoJSON),
-          style: $scope.geoStyle
+          style: [$scope.geoStyle]
         });
-        if(o) $scope.map.removeLayer(o);
+        if(o) { $scope.map.removeLayer(o); }
         $scope.map.addLayer($scope.geoJSONLayer);
       }, true);
     }

@@ -25,6 +25,7 @@ angular.module('starter.controllers', [])
   $scope.recording = false;
 
   var updatePosition = function(coords) {
+    if($scope.recording) addPointToCurrentPath(coords.longitude, coords.latitude);
     $scope.longitude = coords.longitude;
     $scope.latitude = coords.latitude;
   }
@@ -39,17 +40,67 @@ angular.module('starter.controllers', [])
     });
   }
 
+  var getPathObject = function() {
+    return _.find($scope.geoJSON["object"]["features"], function(feature) {
+      return feature["properties"] !== null && feature["properties"]["type"] === "path";
+    });
+  }
+
+  var startNewPath = function() {
+    var pathObject = getPathObject();
+    pathObject["geometry"]["coordinates"].push([])
+    addPointToCurrentPath($scope.longitude, $scope.latitude);
+  }
+
+  var addPointToCurrentPath = function(longitude, latitude) {
+    var pathObject = getPathObject();
+    var currentPath = _.last(pathObject["geometry"]["coordinates"]);
+    currentPath.push([longitude, latitude])
+  }
+
   // Fill in proper GeoJSON object here
   $scope.geoJSON = {};
 
-  $scope.style = function(feature, resolution) {
-    // Return out how to style each feature
-    return null;
-  }
+  $scope.style = new ol.style.Style({
+    stroke: new ol.style.Stroke({
+      color: 'blue',
+      width: 30
+    })});
 
   $scope.record = function() {
+    $scope.geoJSON = {
+      "object": {
+        "type": "FeatureCollection",
+        "features": [{
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [$scope.longitude, $scope.latitude],
+          },
+          "properties": null
+        },
+        {
+          "type": "Feature",
+          "geometry": {
+            "type": "MultiLineString",
+            "coordinates": []
+          },
+          "properties": {
+            "type": "path"
+          }
+        }]
+      }
+    }
     $scope.recording = true;
     $scope.paused = false;
+    startNewPath();
+
+    setTimeout(function() {
+      $scope.$apply(function() {
+        addPointToCurrentPath($scope.longitude + .25, $scope.latitude);
+        console.log(JSON.stringify($scope.geoJSON["object"]))
+      });
+    }, 50);
   }
 
   $scope.stop = function() {
