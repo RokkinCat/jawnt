@@ -46,12 +46,17 @@ angular.module('openstreetmaps', [])
 
       // This may not be performant enough
       $scope.$watch("geoJSON", function(json) {
+        if(_.isEmpty(json)) return;
         var o = $scope.geoJSONLayer;
+
         $scope.geoJSONLayer = new ol.layer.Vector({
-          source: new ol.source.GeoJSON($scope.geoJSON),
-          style: [$scope.geoStyle]
+          source: new ol.source.GeoJSON({
+            projection: 'EPSG:3857',
+            text: json
+          }),
+          style: $scope.geoStyle
         });
-        if(o) { $scope.map.removeLayer(o); }
+        if(o) $scope.map.removeLayer(o);
         $scope.map.addLayer($scope.geoJSONLayer);
       }, true);
     }
