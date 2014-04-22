@@ -20,7 +20,7 @@ angular.module('starter.controllers', [])
 .controller('SearchCtrl', function($scope, $stateParams) {
 })
 
-.controller('CreateCtrl', function($scope, $stateParams) {
+.controller('CreateCtrl', function($scope, $stateParams, $ionicPlatform) {
   $scope.locating = true;
   $scope.recording = false;
 
@@ -31,14 +31,16 @@ angular.module('starter.controllers', [])
   }
 
   // Subscribe to user position
-  if (navigator.geolocation) {
-    $scope.locationObserver = navigator.geolocation.watchPosition(function(position) {
-      $scope.$apply(function() {
-        updatePosition(position.coords);
-        $scope.locating = false;
-      })
-    });
-  }
+  $ionicPlatform.ready(function() {
+    if (navigator.geolocation) {
+      $scope.locationObserver = navigator.geolocation.watchPosition(function(position) {
+        $scope.$apply(function() {
+          updatePosition(position.coords);
+          $scope.locating = false;
+        })
+      });
+    }
+  })
 
   var getPathObject = function() {
     return _.find($scope.geoJSON["features"], function(feature) {
