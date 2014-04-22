@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
-            BuildableName = "HelloCordova.app"
-            BlueprintName = "HelloCordova"
-            ReferencedContainer = "container:HelloCordova.xcodeproj">
+            BuildableName = "Jawnt.app"
+            BlueprintName = "Jawnt"
+            ReferencedContainer = "container:Jawnt.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -52,9 +52,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
-            BuildableName = "HelloCordova.app"
-            BlueprintName = "HelloCordova"
-            ReferencedContainer = "container:HelloCordova.xcodeproj">
+            BuildableName = "Jawnt.app"
+            BlueprintName = "Jawnt"
+            ReferencedContainer = "container:Jawnt.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
