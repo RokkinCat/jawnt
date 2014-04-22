@@ -61,7 +61,7 @@ angular.module('starter.controllers', [])
   }
 
   // Fill in proper GeoJSON object here
-  $scope.geoJSON = {};
+  $scope.geoJSON = null;
 
   $scope.style = function(feature, s) {
     return [new ol.style.Style({
@@ -109,12 +109,13 @@ angular.module('starter.controllers', [])
     $scope.recording = false;
   }
 
-  $scope.pause = function() {
-    $scope.paused = true;
+  $scope.erase = function() {
+    $scope.recording = false;
+    $scope.geoJSON = {};
+    $scope.geoJSON = null;
   }
 
-  $scope.play = function() {
-    $scope.paused = false;
+  $scope.isClean = function() {
+    return _.isEmpty($scope.geoJSON);
   }
-
 })

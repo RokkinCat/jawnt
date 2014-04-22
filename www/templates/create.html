@@ -42,10 +42,17 @@
     <button class="button button-full button-positive button-large"
       style="position: absolute; bottom: 8px;"
       ng-disabled="locating"
-      ng-if="!recording"
+      ng-if="!recording && isClean()"
       ng-click="record()">
         Start recording route
     </button>
+    <div class="button-bar padding"
+      style="position: absolute; bottom: 8px;"
+      ng-if="!recording && !isClean()">
+        <a ng-click="save()" class="button button-balanced col col-66">Save Path</a>
+        <a ng-click="erase()" class="button button-dark col col-33 icon-center ion-trash-b"> Trash</a>
+    </div>
+
     <div ng-if="recording" style="position: absolute; top: 12px; left: 10px; background-color: rgba(30,30,30, .6); color: white; padding: 8px 16px; border-radius: 40px;">
       <span ng-if="!paused">
         <span class="icon ion-record recording-indicator assertive" style="margin-right: 2px;"></span>&nbsp;<strong>Recording</strong>
@@ -55,10 +62,8 @@
       </span>
     </div>
     <div class="button-bar padding button-full" ng-if="recording" style="position: absolute; bottom: 8px;">
-      <a ng-click="stop()" class="button button-dark icon-center ion-stop col col-25"></a>
-      <a ng-click="createPointOfInterest()" class="button button-royal col col-50"><i class="icon ion-ios7-camera" style="position: relative; top: -1.5px; left: -2px; "></i> POI</a>
-      <a ng-click="pause()" ng-if="!paused" class="button button-dark icon-center ion-pause col col-25"></a>
-      <a ng-click="play()" ng-if="paused" class="button button-dark icon-center ion-play col col-25"></a>
+      <a ng-click="createPointOfInterest()" class="button button-royal col col-66"><i class="icon ion-ios7-camera" style="position: relative; top: -1.5px; left: -2px; "></i> Create POI</a>
+      <a ng-click="stop()" class="button button-dark icon-center ion-stop col col-33"> Stop</a>
     </div>
     <div ng-if="locating" style="position: absolute; top: 0px; right: 0px; background-color: rgba(255,255,255,.7); padding: 5px 15px">
       <span class="icon ion-ios7-gear ion-spin"></span> Finding you

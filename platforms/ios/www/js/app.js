@@ -13,7 +13,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'openstreetmaps'])
       StatusBar.styleDefault();
     }
   });
-  console.log($rootScope);
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
@@ -70,5 +69,5 @@ angular.module('starter', ['ionic', 'starter.controllers', 'openstreetmaps'])
       }
     });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/app/create');
 });

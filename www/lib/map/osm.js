@@ -6,7 +6,7 @@ angular.module('openstreetmaps', [])
       controls: "=controls",
       longitude: "=longitude",
       latitude: "=latitude",
-      zoom: "=zoom",
+      zoom: "@zoom",
       geoJSON: "=geoJson",
       geoStyle: "=geoJsonStyle"
     },
@@ -21,7 +21,7 @@ angular.module('openstreetmaps', [])
         ],
         view: new ol.View2D({
           center: ol.proj.transform([37.41, 8.82], 'EPSG:4326', 'EPSG:3857'),
-          zoom: 4
+          zoom: $scope.zoom
         })
       });
 
@@ -59,6 +59,12 @@ angular.module('openstreetmaps', [])
         if(o) $scope.map.removeLayer(o);
         $scope.map.addLayer($scope.geoJSONLayer);
       }, true);
+
+      $scope.map.on('moveend', function(event) {
+        $scope.$apply(function() {
+          $scope.zoom = event.map.getView().getZoom();
+        })
+      })
     }
   }
 });
