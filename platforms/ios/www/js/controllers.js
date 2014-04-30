@@ -40,6 +40,19 @@ angular.module('starter.controllers', [])
         })
       });
     }
+    try {
+      if (window.plugins.backgroundGeoLocation) {
+        window.plugins.backgroundGeoLocation.configure(function(position) {
+          updatePosition(position.coords);
+          window.plugins.backgroundGeoLocation.finish();
+        }, null, {
+          desiredAccuracy: 10,
+          debug: true
+        })
+      }
+    } catch (err) {
+      alert(err);
+    }
   })
 
   var getPathObject = function() {
@@ -99,13 +112,14 @@ angular.module('starter.controllers', [])
         }
       }]
     };
-
+    window.plugins.backgroundGeoLocation.start();
     $scope.recording = true;
     $scope.paused = false;
     startNewPath();
   }
 
   $scope.stop = function() {
+    window.plugins.backgroundGeoLocation.stop();
     $scope.recording = false;
   }
 

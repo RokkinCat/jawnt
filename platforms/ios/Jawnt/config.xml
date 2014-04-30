@@ -30,6 +30,9 @@
     <feature name="Geolocation">
         <param name="ios-package" value="CDVLocation" />
     </feature>
+    <feature name="BackgroundGeoLocation">
+        <param name="ios-package" value="CDVBackgroundGeoLocation" />
+    </feature>
     <name>Jawnt</name>
     <description>
         An Ionic Framework and Cordova project.

@@ -55,6 +55,13 @@ module.exports = [
         "clobbers": [
             "navigator.geolocation"
         ]
+    },
+    {
+        "file": "plugins/org.transistorsoft.cordova.background-geolocation/www/BackgroundGeoLocation.js",
+        "id": "org.transistorsoft.cordova.background-geolocation.BackgroundGeoLocation",
+        "clobbers": [
+            "plugins.backgroundGeoLocation"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -63,7 +70,8 @@ module.exports.metadata =
     "org.apache.cordova.console": "0.2.7",
     "org.apache.cordova.device": "0.2.8",
     "org.apache.cordova.statusbar": "0.1.3",
-    "org.apache.cordova.geolocation": "0.3.6"
+    "org.apache.cordova.geolocation": "0.3.6",
+    "org.transistorsoft.cordova.background-geolocation": "0.2.0"
 }
 // BOTTOM OF METADATA
 });

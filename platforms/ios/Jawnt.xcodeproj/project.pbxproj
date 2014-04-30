@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		1D3623260D0F684500981E51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
@@ -43,6 +42,9 @@
 		D4A0D8761607E02300AEF8BB /* Default-568h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */; };
 		E969428968484609935BB7B5 /* CDVLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = D3757F0007D64CDAB9FE7584 /* CDVLocation.m */; };
 		FD1EEBD50A714D5AAECFC270 /* CDVLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FF8E32147B74D81AC161905 /* CDVLogger.m */; };
+		BFBF73A931E44506BB6200E7 /* CDVBackgroundGeoLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB295FFE7F041C9ADB57F01 /* CDVBackgroundGeoLocation.m */; };
+		79194F0101C347E695F16DB2 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0527D0C768D4187A7E28CBB /* AudioToolbox.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		D3359E3B797648B3B45443D5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 381A1BAB22404E778CC7B38B /* AVFoundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +117,10 @@
 		EB87FDF31871DA8E0020F90C /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; name = www; path = ../../www; sourceTree = "<group>"; };
 		EB87FDF41871DAF40020F90C /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = ../../config.xml; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = Jawnt/config.xml; sourceTree = "<group>"; };
+		1FB295FFE7F041C9ADB57F01 /* CDVBackgroundGeoLocation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVBackgroundGeoLocation.m"; path = "org.transistorsoft.cordova.background-geolocation/CDVBackgroundGeoLocation.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		633833530EE24981826E2821 /* CDVBackgroundGeoLocation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVBackgroundGeoLocation.h"; path = "org.transistorsoft.cordova.background-geolocation/CDVBackgroundGeoLocation.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		A0527D0C768D4187A7E28CBB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AudioToolbox.framework"; path = "System/Library/Frameworks/AudioToolbox.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		381A1BAB22404E778CC7B38B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AVFoundation.framework"; path = "System/Library/Frameworks/AVFoundation.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +133,8 @@
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 				305D5FD1115AB8F900A74A75 /* MobileCoreServices.framework in Frameworks */,
 				5AEE5B35173C68D80009041E /* CoreLocation.framework in Frameworks */,
+				79194F0101C347E695F16DB2 /* AudioToolbox.framework in Frameworks */,
+				D3359E3B797648B3B45443D5 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,6 +228,8 @@
 				5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
 				305D5FD0115AB8F900A74A75 /* MobileCoreServices.framework */,
+				A0527D0C768D4187A7E28CBB /* AudioToolbox.framework */,
+				381A1BAB22404E778CC7B38B /* AVFoundation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -243,6 +253,8 @@
 				CD501708537440FB95E8E127 /* CDVStatusBar.h */,
 				D3757F0007D64CDAB9FE7584 /* CDVLocation.m */,
 				17072AD6845F4C85955D8976 /* CDVLocation.h */,
+				1FB295FFE7F041C9ADB57F01 /* CDVBackgroundGeoLocation.m */,
+				633833530EE24981826E2821 /* CDVBackgroundGeoLocation.h */,
 			);
 			name = Plugins;
 			path = Jawnt/Plugins;
@@ -441,6 +453,7 @@
 				A943DD4DA0F34D64A63AB211 /* CDVDevice.m in Sources */,
 				4A2631D441694785B5678232 /* CDVStatusBar.m in Sources */,
 				E969428968484609935BB7B5 /* CDVLocation.m in Sources */,
+				BFBF73A931E44506BB6200E7 /* CDVBackgroundGeoLocation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
